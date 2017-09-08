@@ -49,11 +49,18 @@ file { "/home/${user}/.vimrc":
   group => $user,
 }
 
+file { "/home/${user}/.config/i3/":
+  ensure => 'directory',
+  owner => $user,
+  group => $user,
+}
+
 file { "/home/${user}/.config/i3/config":
   ensure => 'link',
   target => "${git_folder}/mydotfiles/i3/i3_config",
   owner => $user,
   group => $user,
+  require => File["/home/${user}/.config/i3/"],
 }
 
 file { "/home/${user}/Pictures/planet_express.jpg":
@@ -68,6 +75,15 @@ file { "/etc/alternatives/x-terminal-emulator":
   target => "/usr/bin/urxvt",
   require => Package['rxvt-unicode-256color'],
 }
+
+file { "/home/${user}/.config/fish/config.fish":
+  ensure => 'link',
+  owner => $user,
+  group => $user,
+  target => "${git_folder}/mydotfiles/fish/config.fish",
+  require => Package['fish'],
+}
+
 #change shell
 user { "${user}":
   ensure => 'present',
