@@ -63,6 +63,11 @@ file { "/home/${user}/Pictures/planet_express.jpg":
   group => $user,
 }
 
+file { "/etc/alternatives/x-terminal-emulator":
+  ensure => 'link',
+  target => "/usr/bin/urxvt",
+  require => Package['rxvt-unicode-256color'],
+}
 #change shell
 user { "${user}":
   ensure => 'present',
