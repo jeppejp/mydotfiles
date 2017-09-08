@@ -76,12 +76,18 @@ file { "/etc/alternatives/x-terminal-emulator":
   require => Package['rxvt-unicode-256color'],
 }
 
+file { "/home/${user}/.config/fish/":
+  ensure => 'directory',
+  owner => $user,
+  group => $user,
+}
+
 file { "/home/${user}/.config/fish/config.fish":
   ensure => 'link',
   owner => $user,
   group => $user,
   target => "${git_folder}/mydotfiles/fish/config.fish",
-  require => Package['fish'],
+  require => File['/home/${user}/.config/fish/'],
 }
 
 #change shell
