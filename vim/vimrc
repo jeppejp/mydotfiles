@@ -42,3 +42,6 @@ let g:syntastic_check_on_wq = 0
 
 " Highlight all search results
 set hlsearch
+
+" use autodir to find tags file
+set tags=tags;
