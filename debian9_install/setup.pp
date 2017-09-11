@@ -29,7 +29,9 @@ package { 'rxvt-unicode-256color':
 package { 'vim-pathogen':
   ensure => 'latest',
 }
-
+package {'scrot':
+  ensure => 'latest',
+}
 
 #create config symlinks
 
