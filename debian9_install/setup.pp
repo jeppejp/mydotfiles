@@ -1,10 +1,8 @@
 # does not change path in i3 config
-
-
 $user = "jjp"
 $git_folder = "/home/${user}/git-repos"
 
-#clone vim pluins (requires vim installed)
+
 
 #apt packages
 package { 'vim':
@@ -87,7 +85,7 @@ file { "/home/${user}/.config/fish/config.fish":
   owner => $user,
   group => $user,
   target => "${git_folder}/mydotfiles/fish/config.fish",
-  require => File['/home/${user}/.config/fish/'],
+  require => File["/home/${user}/.config/fish/"],
 }
 
 #change shell
@@ -95,4 +93,12 @@ user { "${user}":
   ensure => 'present',
   shell => '/usr/bin/fish',
   require => Package['fish'],
+}
+
+#install vim vundle
+exec { "vim-vundle":
+  require => Package['vim'],
+  command => "/usr/bin/git clone https://github.com/VundleVim/Vundle.vim.git /home/${user}/.vim/bundle/Vundle.vim",
+  user => "${user}",
+  creates => "/home/${user}/.vim/bundle/Vundle.vim/README.md"
 }
