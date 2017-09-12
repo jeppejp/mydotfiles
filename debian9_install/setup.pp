@@ -32,7 +32,13 @@ package { 'vim-pathogen':
 package {'scrot':
   ensure => 'latest',
 }
-
+package {'htop':
+  ensure => 'latest',
+}
+#root ps1
+file { "/root/.bashrc":
+  content => "PS1=\"\\e[31m[ ROOT ] \\w\\e[0m \""
+}
 #create config symlinks
 
 file { "/home/${user}/.Xdefaults":
