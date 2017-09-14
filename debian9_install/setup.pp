@@ -76,6 +76,13 @@ file { "/home/${user}/Pictures/planet_express.jpg":
   group => $user,
 }
 
+file { "/home/${user}/Pictures/stars.jpg":
+  ensure => 'link',
+  target => "${git_folder}/mydotfiles/backgrounds/stars.jpg",
+  owner => $user,
+  group => $user,
+}
+
 file { "/etc/alternatives/x-terminal-emulator":
   ensure => 'link',
   target => "/usr/bin/urxvt",

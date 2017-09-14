@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-exec --no-startup-id feh --bg-scale /home/jjp/Pictures/planet_express.jpg
+exec --no-startup-id feh --bg-scale /home/jjp/Pictures/stars.jpg
 # No sure these 3 fit in i3 config but never the less
 exec --no-startup-id xset +dpms
 exec --no-startup-id xset dpms 300
