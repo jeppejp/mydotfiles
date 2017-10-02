@@ -23,7 +23,7 @@ filetype plugin indent on    " required
 colo murphy
 set smartindent tabstop=4 shiftwidth=4 expandtab
 map - :Explore<cr>
-map q :bn<cr>
+map q :bn!<cr>
 set laststatus=2
 set number
 syntax on
