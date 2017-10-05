@@ -25,6 +25,7 @@ set smartindent tabstop=4 shiftwidth=4 expandtab
 map - :Explore<cr>
 nmap q :bn!<cr>
 nmap Q :bd<cr>
+
 set laststatus=2
 set number
 syntax on
