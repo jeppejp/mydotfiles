@@ -23,7 +23,8 @@ filetype plugin indent on    " required
 colo murphy
 set smartindent tabstop=4 shiftwidth=4 expandtab
 map - :Explore<cr>
-map q :bn<cr>
+nmap q :bn!<cr>
+nmap Q :bd<cr>
 set laststatus=2
 set number
 syntax on
@@ -31,14 +32,19 @@ execute pathogen#infect()
 
 " Default syntastic settings
 " Open bottom window with :Error and close with :lclose
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" remove stuff from airline
+let g:airline_section_warning = ''
+let g:airline_section_error = ''
+let g:airline_section_z = ''
 
 " Highlight all search results
 set hlsearch
