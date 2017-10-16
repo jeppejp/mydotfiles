@@ -52,3 +52,6 @@ set hlsearch
 
 " use autodir to find tags file
 set tags=tags;
+
+" Map 'm' to recording
+nnoremap m q
