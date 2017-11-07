@@ -17,9 +17,12 @@ exec --no-startup-id xset +dpms
 exec --no-startup-id xset dpms 300
 exec --no-startup-id xset b off
 
+gaps inner 20
+smart_gaps on
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -101,7 +104,7 @@ bindsym $mod+a focus parent
 new_window pixel 3
 
 
-client.focused #9fbc00 #9fbc00 #111111 #111111
+client.focused #ff4926 #ff4926 #111111 #111111
 client.unfocused #444444 #444444 #315858
 client.focused_inactive #444444 #444444 #2c2c2f
 client.urgent #383a3b #383a3b #ee0000
@@ -170,6 +173,7 @@ bindsym $mod+Shift+l exec "/home/jjp/git-repos/mydotfiles/scripts/lock.sh"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command /home/jjp/i3status_jjp.py
 #        status_command exec /usr/bin/python -u /home/jjp/git-repos/misc_files/i3bar.py
+        tray_output DP-3.1
 }

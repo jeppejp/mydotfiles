@@ -1,0 +1,2 @@
+#!/bin/bash
+spotify --disable-accelerated-layers --disable-accelerated-fixed-root-background

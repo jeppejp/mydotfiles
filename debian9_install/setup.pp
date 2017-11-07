@@ -48,6 +48,13 @@ file { "/home/${user}/.Xdefaults":
   group => $user,
 }
 
+file { "/home/${user}/.vim/colors/jpbeans.vim":
+  ensure => 'link',
+  target => "${git_folder}/mydotfiles/jpbeans.vim",
+  owner => $user,
+  group => $user,
+}
+
 file { "/home/${user}/.vimrc":
   ensure => 'link',
   target => "${git_folder}/mydotfiles/vim/vimrc",
@@ -101,6 +108,14 @@ file { "/home/${user}/.config/fish/config.fish":
   group => $user,
   target => "${git_folder}/mydotfiles/fish/config.fish",
   require => File["/home/${user}/.config/fish/"],
+}
+
+#install jfs
+file { "/bin/jfs":
+  ensure => 'link',
+  owner => $user,
+  group => $user,
+  target => "${git_folder}/mydotfiles/scripts/jfs",
 }
 
 #change shell

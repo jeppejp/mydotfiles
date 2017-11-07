@@ -16,11 +16,12 @@ Plugin 'bling/vim-bufferline'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'nightsense/plumber'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-colo murphy
+colo jpbeans
 set smartindent tabstop=4 shiftwidth=4 expandtab
 map - :Explore<cr>
 nmap q :bn!<cr>
@@ -31,6 +32,9 @@ set number
 syntax on
 execute pathogen#infect()
 
+
+"""""""""""""""""""""""""""""""""""
+" SYNTASTIC
 " Default syntastic settings
 " Open bottom window with :Error and close with :lclose
 " set statusline+=%#warningmsg#
@@ -41,7 +45,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_c_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
+let g:syntastic_cpp_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
+let g:syntastic_cpp_verapp_args = "-p gomspace"
 
+"""""""""""""""""""""""""""""""""
+"AIRLINE
 " remove stuff from airline
 let g:airline_section_warning = ''
 let g:airline_section_error = ''
@@ -55,3 +64,5 @@ set tags=tags;
 
 " Map 'm' to recording
 nnoremap m q
+
+set term=rxvt-unicode-256color
