@@ -1,0 +1,2 @@
+#!/bin/bash
+exec grep -HnirIE --include=\*.c\* --include=\*.h\* --include=\*.py "$@" *
