@@ -17,15 +17,19 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nightsense/plumber'
+Plugin 'dylanaraps/wal'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
-colo jpbeans
+set colorcolumn=120
+colo wal
 set smartindent tabstop=4 shiftwidth=4 expandtab
 map - :Explore<cr>
 nmap q :bn!<cr>
 nmap Q :bd<cr>
+imap kk <Esc> 
+nmap cpr O/* Copyright (c) 2013-2018 GomSpace A/S. All rights reserved. */<Esc>
+nmap pcr O# Copyright (c) 2013-2018 GomSpace A/S. All rights reserved.<Esc>
 
 set laststatus=2
 set number
@@ -48,6 +52,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_c_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
 let g:syntastic_cpp_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
 let g:syntastic_cpp_verapp_args = "-p gomspace"
+let g:syntastic_python_checkers = ['python/pycodestyle']
+let g:syntastic_python_pycodestyle_args = "--max-line-length=120 --ignore=E402"
 
 """""""""""""""""""""""""""""""""
 "AIRLINE
