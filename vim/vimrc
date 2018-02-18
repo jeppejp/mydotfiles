@@ -30,6 +30,7 @@ nmap Q :bd<cr>
 imap kk <Esc> 
 nmap cpr O/* Copyright (c) 2013-2018 GomSpace A/S. All rights reserved. */<Esc>
 nmap pcr O# Copyright (c) 2013-2018 GomSpace A/S. All rights reserved.<Esc>
+nnoremap <C-b> :CtrlPBuffer<cr>
 
 set laststatus=2
 set number
@@ -64,6 +65,7 @@ let g:airline_section_z = ''
 
 " Highlight all search results
 set hlsearch
+nnoremap <Space> :noh<cr>
 
 " use autodir to find tags file
 set tags=tags;
@@ -72,3 +74,36 @@ set tags=tags;
 nnoremap m q
 
 set term=rxvt-unicode-256color
+
+let g:MyVimTips="off"
+function! ToggleVimTips()
+    if g:MyVimTips == "on"
+        let g:MyVimTips="off"
+        bd README.md
+        pclose
+    else
+        let g:MyVimTips="on"
+        pedit ~/git-repos/mydotfiles/README.md
+    endif
+endfunction
+set previewheight=10
+nnoremap <F4> :call ToggleVimTips()<CR>
+
+
+
+
+let g:JjpTagShow="off"
+function! ToggleTagShow()
+    if g:JjpTagShow == "on"
+        let g:JjpTagShow="off"
+        pclose
+    else
+        let g:JjpTagShow="on"
+        :exe "ptjump " . expand("<cword>")
+    endif
+endfunction
+
+nnoremap <F5> :call ToggleTagShow()<CR>
+
+" :Man support
+runtime! ftplugin/man.vim

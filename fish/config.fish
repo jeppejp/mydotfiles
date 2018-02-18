@@ -21,5 +21,5 @@ function calc
 end
 funcsave calc
 
-set -g fish_color_cwd 9fbc00
+#set -g fish_color_cwd 9fbc00
 set -gx PATH /usr/local/avr32/bin $PATH
