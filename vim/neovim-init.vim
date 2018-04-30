@@ -10,18 +10,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'nightsense/plumber'
 Plug 'dylanaraps/wal'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 call plug#end()
 
 set colorcolumn=120
-" colo wal
+colorscheme jpterm
 set smartindent tabstop=4 shiftwidth=4 expandtab
-map - :Explore<cr>
-nmap q :bn!<cr>
-nmap Q :bd<cr>
-imap kk <Esc> 
-nmap cpr O/* Copyright (c) 2013-2018 GomSpace A/S. All rights reserved. */<Esc>
-nmap pcr O# Copyright (c) 2013-2018 GomSpace A/S. All rights reserved.<Esc>
-nnoremap <C-b> :CtrlPBuffer<cr>
 
 set laststatus=2
 set number
@@ -53,18 +47,27 @@ let g:airline_section_warning = ''
 let g:airline_section_error = ''
 let g:airline_section_z = ''
 
+
+"""""""""""""""""""""""""""""""""
+" CTRL-P
+" disable finding .git to set
+" start directory
+
+let g:ctrlp_working_path_mode = ''
+
+"""""""""""""""""""""""""""""""""
 " Highlight all search results
 set hlsearch
-nnoremap <Space> :noh<cr>
 
+
+"""""""""""""""""""""""""""""""""
+" TAGS
 " use autodir to find tags file
 set tags=tags;
 
-" Map 'm' to recording
-nnoremap m q
 
-" set term=rxvt-unicode-256color
-
+"""""""""""""""""""""""""""""""""
+" VIM TIPS/CHEAT SHEET
 let g:MyVimTips="off"
 function! ToggleVimTips()
     if g:MyVimTips == "on"
@@ -77,11 +80,9 @@ function! ToggleVimTips()
     endif
 endfunction
 set previewheight=10
-nnoremap <F4> :call ToggleVimTips()<CR>
 
-
-
-
+"""""""""""""""""""""""""""""""""
+" SHOW TAG IN POP UP WINDOW
 let g:JjpTagShow="off"
 function! ToggleTagShow()
     if g:JjpTagShow == "on"
@@ -93,7 +94,23 @@ function! ToggleTagShow()
     endif
 endfunction
 
-nnoremap <F5> :call ToggleTagShow()<CR>
 
-" :Man support
+"""""""""""""""""""""""""""""""""
+" Man support
 runtime! ftplugin/man.vim
+
+
+"""""""""""""""""""""""""""""""""
+" KEY MAPPINGS
+map - :Explore<cr>
+nmap q :bn!<cr>
+nmap Q :bd<cr>
+imap kk <Esc> 
+nmap cpr O/* Copyright (c) 2013-2018 GomSpace A/S. All rights reserved. */<Esc>
+nmap pcr O# Copyright (c) 2013-2018 GomSpace A/S. All rights reserved.<Esc>
+nnoremap <C-b> :CtrlPBuffer<cr>
+nnoremap <F5> :call ToggleTagShow()<CR>
+nnoremap <F4> :call ToggleVimTips()<CR>
+nnoremap m q
+nnoremap <F9> :NERDTreeToggle<CR>
+nnoremap <Space> :noh<cr>

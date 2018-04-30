@@ -1,9 +1,9 @@
 URxvt.transparent:   true
 URxvt.tintColor:     white
-URxvt.shading:       20 
+URxvt.shading:       100 
 URxvt.scrollBar:     false
 URxvt.foreground:    7
-URxvt.font:          xft:Monospace-10
+URxvt.font:          dejavu:Monospace-11
 URxvt*urgentOnBell: true
 
 urxvt*foreground: white

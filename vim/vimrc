@@ -7,6 +7,8 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+
+
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -21,12 +23,27 @@ Plugin 'dylanaraps/wal'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+
+call plug#begin('~/.vim/plugged')
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+"
+" " (Completion plugin option 1)
+" Plug 'roxma/nvim-completion-manager'
+" " (Completion plugin option 2)
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+call plug#end()
+
 set colorcolumn=120
-colo wal
 set smartindent tabstop=4 shiftwidth=4 expandtab
 map - :Explore<cr>
 nmap q :bn!<cr>
-nmap Q :bd<cr>
+nmap Q :bd!<cr>
 imap kk <Esc> 
 nmap cpr O/* Copyright (c) 2013-2018 GomSpace A/S. All rights reserved. */<Esc>
 nmap pcr O# Copyright (c) 2013-2018 GomSpace A/S. All rights reserved.<Esc>
@@ -73,6 +90,17 @@ set tags=tags;
 " Map 'm' to recording
 nnoremap m q
 
+" split right
+set splitright
+
+
+fun! JRUN( arg )
+    :vne
+    execute ':r !' . a:arg
+endfunction
+
+command! -nargs=+ JR call JRUN( '<args>' )
+
 set term=rxvt-unicode-256color
 
 let g:MyVimTips="off"
@@ -86,7 +114,7 @@ function! ToggleVimTips()
         pedit ~/git-repos/mydotfiles/README.md
     endif
 endfunction
-set previewheight=10
+set previewheight=15
 nnoremap <F4> :call ToggleVimTips()<CR>
 
 
@@ -107,3 +135,17 @@ nnoremap <F5> :call ToggleTagShow()<CR>
 
 " :Man support
 runtime! ftplugin/man.vim
+
+nnoremap <F9> :NERDTreeCWD<CR>
+colo jpterm
+
+
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['/home/jjp/git-repos/cquery/build/release/bin/cquery'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>

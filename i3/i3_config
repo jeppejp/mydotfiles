@@ -16,9 +16,11 @@ exec --no-startup-id feh --bg-scale /home/jjp/Pictures/gomspace_small.png
 exec --no-startup-id xset +dpms
 exec --no-startup-id xset dpms 300
 exec --no-startup-id xset b off
+exec --no-startup-id xset +fp /home/jjp/.fonts
+exec --no-startup-id xset fp rehash
 
 gaps inner 40
-smart_gaps on
+# smart_gaps on
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -106,8 +108,8 @@ bindsym $mod+a focus parent
 new_window pixel 3
 
 set_from_resource $fg *.color2 #19cb00
-set_from_resource $bg *.color2 #888888
-set_from_resource $bgt *.color2 #cf6a4c
+set_from_resource $bg *.color2 #444444
+set_from_resource $bgt *.color2 #DDAAAA
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bgt    $bgt    $fg  $bgt      $bgt
@@ -170,10 +172,10 @@ mode "resize" {
         bindsym ae resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -183,10 +185,3 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+l exec "/home/jjp/git-repos/mydotfiles/scripts/lock.sh"
 bindsym $mod+Shift+i exec "/home/jjp/git-repos/misc_files/i3_auto_rename/parse_json.py"
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command /home/jjp/i3status_jjp.py
-#        status_command exec /usr/bin/python -u /home/jjp/git-repos/misc_files/i3bar.py
-        tray_output DP-3.2
-}

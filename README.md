@@ -7,3 +7,7 @@
 |`C-t` | Jump back in tag stack    |`kk`              | Return to normal mode |
 |`-`   | Show file browser         |`m`               | Record macro          |
 |`C-v` | Visual block mode         |`I`               | Visual -> insert      |
+|`F9`  | Open NERDTree in pwd      |
+
+:set spell spelllan=en_gb
+:set nospell
