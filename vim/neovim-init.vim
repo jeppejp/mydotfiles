@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set shell=/bin/bash
+colo jpterm
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
@@ -11,10 +12,10 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nightsense/plumber'
 Plug 'dylanaraps/wal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 set colorcolumn=120
-colorscheme jpterm
 set smartindent tabstop=4 shiftwidth=4 expandtab
 
 set laststatus=2
@@ -103,6 +104,7 @@ runtime! ftplugin/man.vim
 """""""""""""""""""""""""""""""""
 " KEY MAPPINGS
 map - :Explore<cr>
+nnoremap <silent> <C-k> :!/usr/bin/tmux last-pane; /usr/bin/tmux send up enter; /usr/bin/tmux last-pane<CR><CR>
 nmap q :bn!<cr>
 nmap Q :bd<cr>
 imap kk <Esc> 
@@ -114,3 +116,4 @@ nnoremap <F4> :call ToggleVimTips()<CR>
 nnoremap m q
 nnoremap <F9> :NERDTreeToggle<CR>
 nnoremap <Space> :noh<cr>
+
