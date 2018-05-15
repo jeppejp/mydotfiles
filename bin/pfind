@@ -1,0 +1,127 @@
+#!/usr/bin/python
+import os
+import argparse
+import sys
+import re
+
+
+HEADER = '\033[95m'
+OKBLUE = '\033[94m'
+OKGREEN = '\033[92m'
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+ENDC = '\033[0m'
+BOLD = '\033[1m'
+UNDERLINE = '\033[4m'
+
+
+def is_py_src(fn):
+    return fn.endswith('.py')
+
+
+def is_c_src(fn):
+    return fn.endswith('.c') or fn.endswith('.h') or fn.endswith('.cpp') or fn.endswith('.hpp')
+
+
+def print_fn(fn):
+    print OKBLUE + fn + ENDC
+
+
+def highlight(arg, string):
+    if arg.i:
+        pat = re.compile(arg.query, re.IGNORECASE)
+    else:
+        pat = re.compile(arg.query)
+    res = pat.search(string)
+    if res:
+        match = res.group(0)
+        with_col = FAIL + match + ENDC
+        return string.replace(match, with_col)
+    else:
+        return string
+
+
+def print_file(arg, filepath):
+    with open(filepath) as fp:
+        lines = fp.readlines()
+
+        for i, line in enumerate(lines):
+            found = False
+            if arg.i:
+                if arg.query.lower() in line.lower():
+                    found = True
+                    start_line = max(0, i - 3)
+                    end_line = min(i + 3, len(lines) - 1)
+            else:
+                if arg.query in line:
+                    found = True
+                    start_line = max(0, i - 3)
+                    end_line = min(i + 3, len(lines) - 1)
+            if found:
+                print_fn(filepath)
+                for pi in range(start_line, end_line + 1):
+                    print "%4d:%s" % (pi, highlight(arg, lines[pi].replace('\n', '')))
+
+
+def check_in_file(arg, r, fn):
+    filepath = os.path.join(r, fn)
+    with open(filepath) as fp:
+        if arg.i:
+            if arg.query.lower() in fp.read().lower():
+                print_file(arg, filepath)
+        else:
+            if arg.query in fp.read():
+                print_file(arg, filepath)
+
+
+def search_filenames(arg):
+    try:
+        for r, d, f in os.walk(os.getcwd()):
+            for fn in f:
+                if arg.query in fn or (args.i and arg.query.lower() in fn.lower()):
+                    if arg.c:
+                        if is_c_src(fn):
+                            print_fn(os.path.join(r, fn))
+                    elif arg.p:
+                        if is_py_src(fn):
+                            print_fn(os.path.join(r, fn))
+                    else:
+                        print_fn(os.path.join(r, fn))
+    except KeyboardInterrupt:
+        print "\nKeyboardInterrupt"
+
+
+def search_contents(arg):
+    try:
+        for r, d, f in os.walk(os.getcwd()):
+            for fn in f:
+                if arg.c:
+                    if is_c_src(fn):
+                        check_in_file(arg, r, fn)
+                elif arg.p:
+                    if is_py_src(fn):
+                        check_in_file(arg, r, fn)
+                else:
+                    check_in_file(arg, r, fn)
+    except KeyboardInterrupt:
+        print "\nKeyboardInterrupt"
+
+
+if __name__ == '__main__':
+    main = argparse.ArgumentParser(description='JJP Search tool')
+    main.add_argument('-i', action='store_true', default=False, help='Search case insensitive')
+    main.add_argument('-c', action='store_true', default=False, help='Only search C/C++ like source files')
+    main.add_argument('-p', action='store_true', default=False, help='Only search Python like source files')
+    main.add_argument('-H', action='store_true', default=False, help='Highlight query with color')
+
+    subparsers = main.add_subparsers(title='commands')
+    filename_parser = subparsers.add_parser('f', help='search for filenames')
+    filename_parser.set_defaults(func=search_filenames)
+
+    contents_parser = subparsers.add_parser('c', help='search for filenames')
+    contents_parser.set_defaults(func=search_contents)
+
+    main.add_argument('query', type=str, help='The search query')
+
+    args = main.parse_args(sys.argv[1:])
+    args.func(args)
