@@ -25,6 +25,9 @@ syntax on
 
 " source ~/.config/nvim/colorscheme.vim
 colo wal
+hi MatchParen cterm=none ctermfg=red
+hi Visual cterm=none ctermbg=red ctermfg=black
+hi CursorLine cterm=none ctermbg=red ctermfg=black
 
 """""""""""""""""""""""""""""""""""
 " SYNTASTIC
