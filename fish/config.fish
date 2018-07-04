@@ -16,6 +16,8 @@ end
 funcsave fish_right_prompt
 
 
+
+
 function calc
     echo scale=3 \n $argv \n quit | bc -q
 end
@@ -23,3 +25,4 @@ funcsave calc
 
 #set -g fish_color_cwd 9fbc00
 set -gx PATH /usr/local/avr32/bin $PATH
+set -gx PATH /home/jjp/bin $PATH
