@@ -50,16 +50,17 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec ulauncher
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+g exec --no-startup-id /home/jjp/git-repos/mydotfiles/netsearch-rofi.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ae focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -68,10 +69,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ae move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -80,10 +81,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -109,7 +110,7 @@ new_window pixel 3
 
 set_from_resource $fg *.color2 #19cb00
 set_from_resource $bg *.color2 #444444
-set_from_resource $bgt *.color2 #DDAAAA
+set_from_resource $bgt *.color2 #107896
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bgt    $bgt    $fg  $bgt      $bgt
@@ -183,5 +184,4 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+Shift+l exec "/home/jjp/git-repos/mydotfiles/scripts/lock.sh"
 bindsym $mod+Shift+i exec "/home/jjp/git-repos/misc_files/i3_auto_rename/parse_json.py"
