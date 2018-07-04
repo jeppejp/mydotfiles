@@ -1,6 +1,6 @@
 URxvt.transparent:   true
 URxvt.tintColor:     white
-URxvt.shading:       30
+URxvt.shading:       10
 URxvt.scrollBar:     false
 URxvt.foreground:    7
 URxvt.font:          xft:DejaVu Sans Mono:size=10
