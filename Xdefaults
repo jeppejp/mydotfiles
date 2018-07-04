@@ -1,6 +1,8 @@
+!! NOT THIS ONE
+
 URxvt.transparent:   true
 URxvt.tintColor:     white
-URxvt.shading:       100 
+URxvt.shading:       50
 URxvt.scrollBar:     false
 URxvt.foreground:    7
 URxvt.font:          dejavu:Monospace-11
@@ -44,5 +46,6 @@ urxvt*background: black
 !
 ! ! white
 *.color7:       #707880
+!*.color7:       #FFFFFF
 *.color15:      #c5c8c6
 
