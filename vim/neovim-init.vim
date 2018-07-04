@@ -1,7 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set shell=/bin/bash
-colo jpterm
+
+" set termguicolors
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
@@ -12,7 +13,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nightsense/plumber'
 Plug 'dylanaraps/wal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 set colorcolumn=120
@@ -22,6 +23,8 @@ set laststatus=2
 set number
 syntax on
 
+" source ~/.config/nvim/colorscheme.vim
+colo wal
 
 """""""""""""""""""""""""""""""""""
 " SYNTASTIC
