@@ -28,6 +28,7 @@ colo wal
 hi MatchParen cterm=none ctermfg=red
 hi Visual cterm=none ctermbg=red ctermfg=black
 hi CursorLine cterm=none ctermbg=white ctermfg=black
+hi Comment ctermfg=cyan
 
 """""""""""""""""""""""""""""""""""
 " SYNTASTIC

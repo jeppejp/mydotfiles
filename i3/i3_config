@@ -108,9 +108,9 @@ bindsym $mod+a focus parent
 
 new_window pixel 3
 
-set_from_resource $fg *.color2 #19cb00
-set_from_resource $bg *.color2 #444444
-set_from_resource $bgt *.color2 #107896
+set_from_resource $fg color0 #19cb00
+set_from_resource $bg color0 #444444
+set_from_resource $bgt color6 #107896
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bgt    $bgt    $fg  $bgt      $bgt
