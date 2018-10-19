@@ -14,6 +14,7 @@ Plug 'nightsense/plumber'
 Plug 'dylanaraps/wal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
+Plug 'neomake/neomake'
 call plug#end()
 
 set colorcolumn=120
@@ -124,3 +125,4 @@ nnoremap m q
 nnoremap <F9> :NERDTreeToggle<CR>
 nnoremap <Space> :noh<cr>
 
+set makeprg=/home/jjp/Executor/client.py\ ./waf
