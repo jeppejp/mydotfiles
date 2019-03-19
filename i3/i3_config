@@ -19,7 +19,7 @@ exec --no-startup-id xset b off
 exec --no-startup-id xset +fp /home/jjp/.fonts
 exec --no-startup-id xset fp rehash
 
-gaps inner 40
+# gaps inner 40
 # smart_gaps on
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -182,6 +182,14 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+bar {
+    position       top
+    status_command i3blocks
+    tray_output    DP-1
+
+}
+
 
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+i exec "/home/jjp/git-repos/misc_files/i3_auto_rename/parse_json.py"
