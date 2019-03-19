@@ -15,6 +15,7 @@ Plug 'dylanaraps/wal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
 Plug 'neomake/neomake'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 set colorcolumn=120
@@ -88,7 +89,8 @@ function! ToggleVimTips()
         pedit ~/git-repos/mydotfiles/README.md
     endif
 endfunction
-set previewheight=10
+set previewheight=20
+set splitbelow
 
 """""""""""""""""""""""""""""""""
 " SHOW TAG IN POP UP WINDOW
@@ -123,6 +125,7 @@ nnoremap <F5> :call ToggleTagShow()<CR>
 nnoremap <F4> :call ToggleVimTips()<CR>
 nnoremap m q
 nnoremap <F9> :NERDTreeToggle<CR>
-nnoremap <Space> :noh<cr>
+nnoremap <Space> :noh<cr> :pc<cr>
+nnoremap <C-n> :cnext<cr>
 
 set makeprg=/home/jjp/Executor/client.py\ ./waf
