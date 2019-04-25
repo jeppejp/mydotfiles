@@ -121,7 +121,7 @@ client.urgent           $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 # swap keyboard layout
-bindsym $mod+x exec /home/jjp/git-repos/mydotfiles/scripts/switch_keyboard_layout.sh
+# bindsym $mod+x exec /home/jjp/git-repos/mydotfiles/scripts/switch_keyboard_layout.sh
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
