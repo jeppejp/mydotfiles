@@ -9,13 +9,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'nightsense/plumber'
 Plug 'dylanaraps/wal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
 Plug 'neomake/neomake'
-Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 set colorcolumn=120
@@ -26,7 +26,7 @@ set number
 syntax on
 
 " source ~/.config/nvim/colorscheme.vim
-colo wal
+colo delek
 hi MatchParen cterm=none ctermfg=red
 hi Visual cterm=none ctermbg=red ctermfg=black
 hi CursorLine cterm=none ctermbg=white ctermfg=black
@@ -46,9 +46,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_c_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
 let g:syntastic_cpp_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
-let g:syntastic_cpp_verapp_args = "-p gomspace"
-let g:syntastic_python_checkers = ['python/pycodestyle']
-let g:syntastic_python_pycodestyle_args = "--max-line-length=120 --ignore=E402"
+"let g:syntastic_python_checkers = ['python/pycodestyle']
+let g:ale_python_pylint_options = "-d missing-function-docstring -d missing-module-docstring -d unused-import -d import-error -d wrong-import-position --max-line-length=120 -d missing-class-docstring -d unexpected-keyword-arg"
 
 """""""""""""""""""""""""""""""""
 "AIRLINE
@@ -106,6 +105,10 @@ function! ToggleTagShow()
 endfunction
 
 
+""""""""""""""""""""""""""""""""
+" JSON format
+com! JSONFormat %!python3 -m json.tool
+
 """""""""""""""""""""""""""""""""
 " Man support
 runtime! ftplugin/man.vim
@@ -118,8 +121,6 @@ nnoremap <silent> <C-k> :!/usr/bin/tmux last-pane; /usr/bin/tmux send up enter; 
 nmap q :bn!<cr>
 nmap Q :bd<cr>
 imap kk <Esc> 
-nmap cpr O/* Copyright (c) 2013-2018 GomSpace A/S. All rights reserved. */<Esc>
-nmap pcr O# Copyright (c) 2013-2018 GomSpace A/S. All rights reserved.<Esc>
 nnoremap <C-b> :CtrlPBuffer<cr>
 nnoremap <F5> :call ToggleTagShow()<CR>
 nnoremap <F4> :call ToggleVimTips()<CR>
