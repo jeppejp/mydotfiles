@@ -16,6 +16,7 @@ Plug 'dylanaraps/wal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
 Plug 'neomake/neomake'
+" Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 set colorcolumn=120
@@ -48,6 +49,7 @@ let g:syntastic_c_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'ma
 let g:syntastic_cpp_checkers = ['cpp/verapp', 'clang_tidy', 'cppcheck', 'gcc', 'make']
 "let g:syntastic_python_checkers = ['python/pycodestyle']
 let g:ale_python_pylint_options = "-d missing-function-docstring -d missing-module-docstring -d unused-import -d import-error -d wrong-import-position --max-line-length=120 -d missing-class-docstring -d unexpected-keyword-arg"
+let g:ale_python_flake8_options = "--max-line-length=120 --ignore=F401,E302,E305"
 
 """""""""""""""""""""""""""""""""
 "AIRLINE
