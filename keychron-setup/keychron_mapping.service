@@ -1,0 +1,10 @@
+[Unit]
+Description=Fix mapping
+Wants=keychron_mapping.timer
+
+[Service]
+Type=oneshot
+ExecStart=/home/jjp/git-repos/mydotfiles/keychron-setup/setup_print_screen_to_insert.sh
+
+[Install]
+WantedBy=multi-user.target
